@@ -1,5 +1,54 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<SaleWebMvc.Models.Seller>
+
 @{
+    ViewData["Title"] = "Seller";
 }
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+<a asp-action="Create">Create New</a>
+
+<table class="table table-hover table-striped">
+    <thead>
+        <tr class="success">
+            <th>
+                @Html.DisplayNameFor(p => p.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(p => p.BaseSalary)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(p => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(p => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(p => item.BirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(p => item.BaseSalary)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+
+</table>
