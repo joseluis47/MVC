@@ -41,5 +41,39 @@ namespace SaleWebMvc.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Delete(int? Id)
+        {
+           if (Id == null)
+            {
+                throw new Exception("Sem Id");
+            }
+
+            var obj = SellerService.FindById(Id.Value);
+
+            if (obj == null)
+            {
+                throw new Exception("Sem Id");
+            }
+            return View(obj);
+        }
+
+       [HttpPost]
+       [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                SellerService.Excluir(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+
     }
 }

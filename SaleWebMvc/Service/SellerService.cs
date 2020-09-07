@@ -1,4 +1,5 @@
-﻿using SaleWebMvc.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using SaleWebMvc.Data;
 using SaleWebMvc.Models;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,21 @@ namespace SaleWebMvc.Service
         {
             return _context.Seller.OrderBy(p => p.Name).ToList();
         }
-        public void  Inserir(Seller seller)
+        public void Inserir(Seller seller)
         {
             _context.Seller.Add(seller);
+            _context.SaveChanges();
+        }
+
+        public Seller FindById(int id)
+        {
+            return _context.Seller.Include(p=>p.Department).FirstOrDefault(p => p.Id == id);
+        }
+
+        public void Excluir(int Id)
+        {
+            var obj = FindById(Id);
+            _context.Seller.Remove(obj);
             _context.SaveChanges();
         }
     }

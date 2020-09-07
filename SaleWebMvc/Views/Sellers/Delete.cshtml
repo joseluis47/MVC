@@ -1,0 +1,54 @@
+﻿@model SaleWebMvc.Models.Seller
+   
+@{ 
+    ViewData["Title"] = "Seller";
+}
+<h2> @ViewData["Title"]</h2>
+<hr />
+<p> Você tem certeza que deseja <strong>Excluir</strong> o vendedor abaixo:</p>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(p => p.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(p => p.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(p => p.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(p => p.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(p => p.BirthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(p => p.BirthDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(p => p.BaseSalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(p => p.BaseSalary)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(p => p.Department.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(p => p.Department.Name)
+        </dd>
+
+    </dl>
+    <form asp-action="Delete"class="form-group">
+        <input type="hidden" asp-for="@Model.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-action="Index">Return</a>
+    </form>
+</div>
