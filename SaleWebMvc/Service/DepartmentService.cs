@@ -7,23 +7,18 @@ using System.Threading.Tasks;
 
 namespace SaleWebMvc.Service
 {
-    public class SellerService
+    public class DepartmentService
     {
         public SaleWebMvcContext _context { get; private set; }
 
-        public SellerService(SaleWebMvcContext context)
+        public DepartmentService(SaleWebMvcContext context)
         {
             _context = context;
         }
 
-        public List<Seller> FindAll()
+        public List<Department> FindAll()
         {
-            return _context.Seller.OrderBy(p => p.Name).ToList();
-        }
-        public void  Inserir(Seller seller)
-        {
-            _context.Seller.Add(seller);
-            _context.SaveChanges();
+            return _context.Department.OrderBy(p => p.Name).ToList();
         }
     }
 }

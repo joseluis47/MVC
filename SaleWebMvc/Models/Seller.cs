@@ -20,6 +20,8 @@ namespace SaleWebMvc.Models
 
         public Department Department { get; set; }
 
+        public int DepartmentId { get; set; }
+
         public IEnumerable<SalesRecord> SalesRecord { get; set; } = new List<SalesRecord>();
 
         public Seller()
