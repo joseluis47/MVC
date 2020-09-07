@@ -16,10 +16,18 @@ namespace SaleWebMvc.Controllers
             SellerService = sellerService;
         }
 
+        
+        
         public IActionResult Index()
         {
             var obj = SellerService.FindAll();
             return View(obj);
+        }
+
+        public IActionResult Create()
+        {
+            
+            return View();
         }
     }
 }
